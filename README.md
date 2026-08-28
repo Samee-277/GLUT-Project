@@ -177,3 +177,10 @@ for restarting the game.
 		Player = Starting Position
 		Obstacles = Starting Positions
 		Game Over = false
+
+
+For setup opengl environment in codeblocks:
+	
+	I share a youtube link : 
+	
+		https://www.youtube.com/watch?v=7rLo69vCooU&pp=ygUUb3BlbmdsIGdsdXQgdHV0b3JpYWw%3D
