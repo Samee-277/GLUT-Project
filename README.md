@@ -1,8 +1,12 @@
 # GLUT-Project
 Glut project description
+
 Hiiiiiii!!! 
 
 This is my GLUT project. I will explain you how I make this project.
+
+A simple 2D Racing Car Game developed using C++ and OpenGL GLUT as a Computer Graphics project.
+The player controls a red racing car and tries to avoid incoming obstacles. The obstacles continuously move toward the player, and the score increases whenever an obstacle passes the bottom of the screen. As the score increases, the game becomes faster and more challenging.
 
 ----Setup Instruction-----
 
@@ -61,10 +65,20 @@ How to build the game:
 
 	Obstacles
 
-		There are three purple obstacles:
-		float obstacles[3][2]
-		Each obstacle moves downward toward the player.
-		hen an obstacle leaves the screen, it is moved back to the top and the player's score increases.
+		The game contains three obstacles:
+		float obstacles[3][2] = {
+		    {-0.2f, 1.2f},
+		    { 0.2f, 1.8f},
+		    { 0.2f, 2.4f}
+		};
+		Each obstacle has:
+		X position
+		Y position
+		The obstacles move downward using:
+		obstacles[i][1] -= speed;
+		When an obstacle leaves the screen, it is randomly repositioned:
+		obstacles[i][1] = 1.2f + (rand() % 4) * 0.2f;
+		This provides variation in the obstacle positions.
 
 	Collision Detection
 
@@ -92,3 +106,74 @@ How to build the game:
 		The maximum speed is:
 		const float MAX_SPEED = 0.04f;
 		Therefore, the longer the player survives, the faster the obstacles move.
+
+Technologies Used:
+			
+			Programming Language: C++
+			Graphics Library: OpenGL
+			Window/Input Library: GLUT
+			Graphics: 2D OpenGL
+			Animation: GLUT Timer
+			Rendering: Immediate Mode OpenGL
+			Buffering: Double Buffering
+			Window Size: 600 × 600 pixels
+
+Dependencies
+
+
+		C++ compiler
+		OpenGL
+		GLUT or FreeGLUT
+		OpenGL development libraries
+		Code::Blocks + MinGW
+
+The program uses:
+	#include <GL/glut.h>
+	Therefore, GLUT/FreeGLUT must be installed and configured correctly.
+
+Main Functions:
+
+display()
+	Draws the complete game:
+	Roadside
+	Road
+	Lane markings
+	Player car
+	Obstacles
+	Score
+	Game Over message
+
+update()
+
+The main game update function.
+
+It handles:
+
+	Road animation
+	Obstacle movement
+	Obstacle respawning
+	Score updates
+	Speed increases
+	Collision detection
+	
+specialKeys()
+
+	Handles:
+	
+		Left Arrow
+		Right Arrow
+	
+	keyboard()
+		Handles normal keyboard input, especially:
+		R / r
+
+
+for restarting the game.
+	
+	resetGame()
+		Restores:
+		Score = 0
+		Speed = 0.015
+		Player = Starting Position
+		Obstacles = Starting Positions
+		Game Over = false
