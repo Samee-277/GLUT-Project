@@ -17,7 +17,6 @@ float obstacles[3][2] = {
     { 0.2f,  2.4f}
 };
 
-
 void drawScore(const char *text, float x, float y) {
     glRasterPos2f(x, y);
     for (int i = 0; i < strlen(text); i++) {
@@ -37,28 +36,23 @@ void resetGame() {
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
-
-
     glColor3f(0.0f, 0.6f, 0.9f);
     glBegin(GL_QUADS);
         glVertex2f(-1.0f, -1.0f); glVertex2f(-0.5f, -1.0f);
         glVertex2f(-0.5f,  1.0f); glVertex2f(-1.0f,  1.0f);
-
         glVertex2f( 0.5f, -1.0f); glVertex2f( 1.0f, -1.0f);
         glVertex2f( 1.0f,  1.0f); glVertex2f( 0.5f,  1.0f);
     glEnd();
-
-
+    
     glColor3f(0.1f, 0.1f, 0.1f);
     glBegin(GL_QUADS);
-        glVertex2f(-0.5f, -1.0f); glVertex2f(0.5f, -1.0f);
-        glVertex2f( 0.5f,  1.0f); glVertex2f(-0.5f, 1.0f);
+    glVertex2f(-0.5f, -1.0f); glVertex2f(0.5f, -1.0f);
+    glVertex2f( 0.5f,  1.0f); glVertex2f(-0.5f, 1.0f);
     glEnd();
-
 
     glColor3f(1.0f, 1.0f, 1.0f);
     for (float y = -1.0f + roadOffset; y < 1.0f; y += 0.4f) {
-        glBegin(GL_QUADS);
+            glBegin(GL_QUADS);
             glVertex2f(-0.02f, y);
             glVertex2f( 0.02f, y);
             glVertex2f( 0.02f, y + 0.2f);
@@ -75,7 +69,6 @@ void display() {
         glVertex2f(playerX - 0.1f, -0.5f);
     glEnd();
 
-
     glColor3f(0.6f, 0.2f, 0.7f);
     for (int i = 0; i < 3; i++) {
         glBegin(GL_QUADS);
@@ -86,12 +79,10 @@ void display() {
         glEnd();
     }
 
-
     glColor3f(1.0f, 1.0f, 1.0f);
     char scoreStr[30];
     sprintf(scoreStr, "Score: %d", score);
     drawScore(scoreStr, 0.55f, 0.8f);
-
     if (gameOver) {
         drawScore("GAME OVER!", -0.2f, 0.1f);
         drawScore("Press 'R' to Restart", -0.3f, -0.1f);
@@ -102,26 +93,17 @@ void display() {
 
 void update(int value) {
     if (!gameOver) {
-
         roadOffset -= speed;
         if (roadOffset < -0.4f) roadOffset = 0.0f;
-
-
         for (int i = 0; i < 3; i++) {
             obstacles[i][1] -= speed;
-
-
             if (obstacles[i][1] < -1.2f) {
                 obstacles[i][1] = 1.2f + (rand() % 4) * 0.2f;
                 score++;
-
-
                 if (score % 3 == 0 && speed < MAX_SPEED) {
                     speed += 0.003f;
                 }
             }
-
-
             if (playerX + 0.1f > obstacles[i][0] - 0.1f &&
                 playerX - 0.1f < obstacles[i][0] + 0.1f &&
                 -0.5f > obstacles[i][1] - 0.15f &&
@@ -135,7 +117,7 @@ void update(int value) {
     glutTimerFunc(16, update, 0);
 }
 
-// Key Controls
+//(key control)
 void specialKeys(int key, int x, int y) {
     if (!gameOver) {
         if (key == GLUT_KEY_LEFT && playerX > -0.35f)  playerX -= 0.1f;
