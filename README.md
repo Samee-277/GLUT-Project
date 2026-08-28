@@ -184,3 +184,5 @@ For setup opengl environment in codeblocks:
 	I share a youtube link : 
 	
 		https://www.youtube.com/watch?v=7rLo69vCooU&pp=ygUUb3BlbmdsIGdsdXQgdHV0b3JpYWw%3D
+		Notice that this video only for codeb;ocks 20.03 version.
+
