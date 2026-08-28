@@ -15,6 +15,7 @@ The player controls a red racing car and tries to avoid incoming obstacles. The 
 <img width="602" height="637" alt="image" src="https://github.com/user-attachments/assets/9b3dbe0e-0f8e-422d-99f2-530103c2db60" />
 	
 
+
 Expected Game Appearance:
 	
 	🟦 Blue roadside areas(River Side)
